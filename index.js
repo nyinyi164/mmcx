@@ -18,7 +18,7 @@ request(urlUpdate, function (error, response, body) {
         //console.log(typeof json);
         
     }
-  else if (error) {
+  else {
         json = {
                 "info":"Central Bank of Myanmar",
                 "description":"Official Website of Central Bank of Myanmar",
@@ -98,6 +98,7 @@ function sendMessage(recipientId, message) {
         }
     });
 };
+
 function doConversion(recipientId, text) {
     var amount,inputCurrency,todayRate;
     var currency = null;
