@@ -45,7 +45,7 @@ app.use('/terms', express.static(__dirname + '/public'));
 //console.log("Server running at Port 3000");
 // Facebook Webhook
 app.get('/webhook', function (req, res) {
-    if (req.query['hub.verify_token'] === 'mmcx_verify_token_nn') {
+    if (req.query['hub.verify_token'] === 'mmcx_verify_token_v2') {
         res.send(req.query['hub.challenge']);
     } else {
         res.send('Invalid verify token');
