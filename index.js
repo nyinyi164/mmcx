@@ -31,7 +31,7 @@ request(urlUpdate, function (error, response, body) {
                         "IDR":"9.8099","KHR":"31.709","SGD":"918.51"
                         }
                 }
-    err = error+response.statusCode;
+    err = error;
     //response.send('This happen when cbm api request error'+error);
   } 
   for(var k in json.rates) keys.push(k);
