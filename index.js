@@ -18,7 +18,7 @@ request(urlUpdate, function (error, response, body) {
         //console.log(typeof json);
         
     }
- /* else if (error) {
+  else if (error) {
         json = {
                 "info":"Central Bank of Myanmar",
                 "description":"Official Website of Central Bank of Myanmar",
@@ -33,7 +33,7 @@ request(urlUpdate, function (error, response, body) {
                 }
     err = error+response.statusCode;
     //response.send('This happen when cbm api request error'+error);
-  } */
+  } 
   for(var k in json.rates) keys.push(k);
 });
 
