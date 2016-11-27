@@ -113,8 +113,8 @@ function doConversion(recipientId, text) {
                 } 
             }
             if (currency != null) {
-                //todayRate = json['rates'][currency];
-                todayRate = 1200;
+                todayRate = json['rates'][currency];
+                //todayRate = 1200;
                 var todayRate = parseFloat(todayRate.replace(/,/g, ''));
                 if (currency === "JPY" || currency === "VND" || currency === "KRW")
                 todayRate = todayRate / 100;
