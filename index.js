@@ -73,13 +73,13 @@ app.post('/webhook', function (req, res) {
         if (!doConversion(event.sender.id, event.message.text)) {
             sendMessage(event.sender.id, {text: randomText + " You typed "+event.message.text});
         }
-       /* else if (err) {
+        else if (err) {
             sendMessage(event.sender.id, {text: apiErrorText});
-    }*/
+    }
     }    
     }
     res.sendStatus(200);
-});*/
+}); */
 
 function sendMessage(recipientId, message) {
     request({
