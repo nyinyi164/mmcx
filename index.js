@@ -51,7 +51,7 @@ app.get('/webhook', function (req, res) {
         res.send('Invalid verify token');
     }
 });
-app.post('/webhook', function (req, res) {
+/*app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
@@ -61,25 +61,25 @@ app.post('/webhook', function (req, res) {
     }
     res.sendStatus(200);
 });
-
-/*app.post('/webhook', function (req, res) {
+*/
+app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
         var randomText = 'Our auto-respond system do not understand your demand. One of the admin will get back to you soon.'+
         '(If you want to interact with our auto-respond system, try "help" for assistant)';
         var apiErrorText = 'Exchange rate api from Central Bank of Myanmar is not available right now.Please try again later';
-    if (event.message && event.message.text) {
-        if (!doConversion(event.sender.id, event.message.text)) {
+        if (event.message && event.message.text) {
+            if (!doConversion(event.sender.id, event.message.text)) {
             sendMessage(event.sender.id, {text: randomText + " You typed "+event.message.text});
-        }
-        else if (err) {
+            }
+            else if (err) {
             sendMessage(event.sender.id, {text: apiErrorText});
-    }
-    }    
+            }
+        }    
     }
     res.sendStatus(200);
-}); */
+}); 
 
 function sendMessage(recipientId, message) {
     request({
