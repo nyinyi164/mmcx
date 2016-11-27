@@ -34,7 +34,7 @@ request(urlUpdate, function (error, response, body) {
     err = error+response.statusCode;
     //response.send('This happen when cbm api request error'+error);
   } */
-  //for(var k in json.rates) keys.push(k);
+  for(var k in json.rates) keys.push(k);
 });
 
 // Server frontpage
