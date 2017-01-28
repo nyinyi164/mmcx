@@ -77,10 +77,10 @@ app.post('/webhook', function (req, res) {
             // sendMessage(event.sender.id, {text: apiErrorText});
             // }
         }
-        else if (event.postback) 
+        else if (event.quick_reply) 
         {
-            console.log("Postback received: " + JSON.stringify(event.postback));
-            var postbackCurrency = event.postback.payload;
+            console.log("quick_reply received: " + JSON.stringify(event.quick_reply));
+            var postbackCurrency = event.quick_reply.payload;
             changeCurrency(recipientId, postbackCurrency);
             //console.log("Postback received: " + JSON.stringify(event.postback));
         }    
