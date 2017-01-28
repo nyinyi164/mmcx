@@ -106,7 +106,7 @@ function sendMessage(recipientId, message) {
 };
 //Send Quick Reply
 function sendCurrenyOption(recipientId, text) {
-    if (typeof text == string && text.length < 3 ) {
+    if ( text.length < 3 ) {
         text = text.toUpperCase();
         if (text === "HI") {
             message = {
