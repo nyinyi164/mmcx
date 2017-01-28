@@ -73,9 +73,9 @@ app.post('/webhook', function (req, res) {
             if (!sendCurrenyOption(event.sender.id, event.message.text)) {
             sendMessage(event.sender.id, {text: requestHiText});
             }
-            else if (err) {
-            sendMessage(event.sender.id, {text: apiErrorText});
-            }
+            // else if (err) {
+            // sendMessage(event.sender.id, {text: apiErrorText});
+            // }
         }
         else if (event.postback && event.postback.payload) 
         {
