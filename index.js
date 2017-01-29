@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var router = express.Router();
 var app = express();
-var json,err;
+var json,err="Exchange rates request OK";
 var keys = [];
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -32,7 +32,7 @@ request(urlUpdate, function (error, response, body) {
                         "IDR":"9.8099","KHR":"31.709","SGD":"918.51"
                         }
                 }
-    err = error;
+    err = error+" Exchange rate request Error";
     //response.send('This happen when cbm api request error'+error);
   } 
   for(var k in json.rates) keys.push(k);
