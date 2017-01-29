@@ -70,15 +70,15 @@ app.post('/webhook', function (req, res) {
         var requestHiText = '​ေအး​ေဆး​ေပါ့ဗ်ာ က်ြန္​​ေတာ့္ကို Hi လို႔နႈတ္​ဆက္​ပါဦး '; // request user to say hi or hello
         var apiErrorText = 'ဗဟိုဘဏ္​က​ေန ​ေငြလဲနႈန္​းသြားယူတာမရ​ေသးလို႔ ​ေငြလဲနႈန္​းအ​ေဟာင္​းနဲ႔ပဲတြက္​​ေပးလိုက္​တယ္​​ေနာ္​'; // cannot get data from central bank
         if (event.message && event.message.text) {
-            if (!sendCurrenyOption(event.recipient.id, event.message.text)) {
-            sendMessage(event.sender.id, {text: requestHiText});
+            if (!sendCurrenyOption(event.sender.id.toString(), event.message.text)) {
+            sendMessage(event.sender.id., {text: requestHiText});
             }
             // else if (err) {
             // sendMessage(event.sender.id, {text: apiErrorText});
             // }
         }
         else if (true) {
-            
+
         }
         else if (event.quick_reply) 
         {
