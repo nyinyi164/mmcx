@@ -70,7 +70,7 @@ app.post('/webhook', function (req, res) {
         var requestHiText = '​ေအး​ေဆး​ေပါ့ဗ်ာ က်ြန္​​ေတာ့္ကို Hi လို႔နႈတ္​ဆက္​ပါဦး '; // request user to say hi or hello
         var apiErrorText = 'ဗဟိုဘဏ္​က​ေန ​ေငြလဲနႈန္​းသြားယူတာမရ​ေသးလို႔ ​ေငြလဲနႈန္​းအ​ေဟာင္​းနဲ႔ပဲတြက္​​ေပးလိုက္​တယ္​​ေနာ္​'; // cannot get data from central bank
         if (event.message && event.message.text) {
-            if (!sendCurrenyOption(event.sender.id, event.message.text)) {
+            if (!sendCurrenyOption(event.recipient.id, event.message.text)) {
             sendMessage(event.sender.id, {text: requestHiText});
             }
             // else if (err) {
@@ -84,7 +84,7 @@ app.post('/webhook', function (req, res) {
         {
             console.log("quick_reply received: " + JSON.stringify(event.quick_reply));
             var postbackCurrency = event.quick_reply.payload;
-            changeCurrency(event.recipient.id, postbackCurrency);
+            changeCurrency(event.sender.id, postbackCurrency);
             //console.log("Postback received: " + JSON.stringify(event.postback));
         }    
     }
