@@ -71,15 +71,13 @@ app.post('/webhook', function (req, res) {
         var apiErrorText = 'ဗဟိုဘဏ္​က​ေန ​ေငြလဲနႈန္​းသြားယူတာမရ​ေသးလို႔ ​ေငြလဲနႈန္​းအ​ေဟာင္​းနဲ႔ပဲတြက္​​ေပးလိုက္​တယ္​​ေနာ္​'; // cannot get data from central bank
         if (event.message && event.message.text) {
             if (!sendCurrenyOption(event.sender.id.toString(), event.message.text)) {
-            sendMessage(event.sender.id., {text: requestHiText});
+            sendMessage(event.sender.id, {text: requestHiText});
             }
             // else if (err) {
             // sendMessage(event.sender.id, {text: apiErrorText});
             // }
         }
-        else if (true) {
-
-        }
+        //else if (true) {}
         else if (event.quick_reply) 
         {
             console.log("quick_reply received: " + JSON.stringify(event.quick_reply));
