@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var router = express.Router();
 var app = express();
-var json,err="Exchange rates request OK";
+var json,err;
 var keys = [];
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
