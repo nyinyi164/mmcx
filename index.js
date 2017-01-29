@@ -81,7 +81,7 @@ app.post('/webhook', function (req, res) {
         {
             console.log("quick_reply received: " + JSON.stringify(event.quick_reply));
             var postbackCurrency = event.quick_reply.payload;
-            changeCurrency(recipientId, postbackCurrency);
+            changeCurrency(event.sender.id, postbackCurrency);
             //console.log("Postback received: " + JSON.stringify(event.postback));
         }    
     }
