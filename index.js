@@ -67,23 +67,16 @@ app.post('/webhook', function (req, res) {
     var events = req.body.entry[0].messaging;
     for (i = 0; i < events.length; i++) {
         var event = events[i];
-        var requestHiText = '​ေအး​ေဆး​ေပါ့ဗ်ာ က်ြန္​​ေတာ့္ကို Hi လို႔နႈတ္​ဆက္​ပါဦး '; // request user to say hi or hello
-        var apiErrorText = 'ဗဟိုဘဏ္​က​ေန ​ေငြလဲနႈန္​းသြားယူတာမရ​ေသးလို႔ ​ေငြလဲနႈန္​းအ​ေဟာင္​းနဲ႔ပဲတြက္​​ေပးလိုက္​တယ္​​ေနာ္​'; // cannot get data from central bank
+        var randomText = 'Our auto-respond system do not understand your demand. One of the admin will get back to you soon.'+
+        '(If you want to interact with our auto-respond system, try "help" for assistant)';
+        var apiErrorText = 'Exchange rate api from Central Bank of Myanmar is not available right now.Please try again later';
         if (event.message && event.message.text) {
-            if (!sendCurrenyOption(event.sender.id, event.message.text)) {
-            sendMessage(event.sender.id, {text: requestHiText});
+            if (!doConversion(event.sender.id, event.message.text)) {
+            sendMessage(event.sender.id, {text: randomText + " You typed "+event.message.text});
             }
-            // else if (err) {
-            // sendMessage(event.sender.id, {text: apiErrorText});
-            // }
-        }
-        //else if (true) {}
-        else if (event.quick_reply) 
-        {
-            console.log("quick_reply received: ");
-            var postbackCurrency = event.quick_reply.payload;
-            changeCurrency(event.sender.id, postbackCurrency);
-            //console.log("Postback received: " + JSON.stringify(event.postback));
+            else if (err) {
+            sendMessage(event.sender.id, {text: apiErrorText});
+            }
         }    
     }
     res.sendStatus(200);
@@ -106,78 +99,8 @@ function sendMessage(recipientId, message) {
         }
     });
 };
-//Send Quick Reply
-function sendCurrenyOption(recipientId, text) {
-    if ( text.length < 3 ) {
-        text = text.toUpperCase();
-        if (text === "HI") {
-            message = {
-                "text":"​ေဈးသိခ်င္​တဲ့ ​ေငြ​ေၾကးအမ်ိဳးအစားကို​ေ႐ြး​ေပးပါ", // choose currency type
-                "quick_replies":[
-                  {
-                    "content_type":"text",
-                    "title":"USA Dollar-USD",
-                    "payload":"USD"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Singapore Dollar-SGD",
-                    "payload":"SGD"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Thailand Baht-THB",
-                    "payload":"THB"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Malaysia Ringgit-MYR",
-                    "payload":"MYR"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Japan Yen-JPY",
-                    "payload":"JPY"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Great Britain Pound-GBP",
-                    "payload":"GBP"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"EURO-EUR",
-                    "payload":"EUR"
-                  },
-                  {
-                    "content_type":"text",
-                    "title":"Vietnam Dong-VND",
-                    "payload":"VND"
-                  }
-                ]
-            }
-            sendMessage(recipientId, message);       
-            return true;
-        }
-    }
-    return false;
-}
-function changeCurrency(recipientId, postbackCurrency){
-    var todayRate;
-    var currency = postbackCurrency;
-    var amount = 1;
-    if (currency != null) {
-        todayRate = json['rates'][currency];
-        //todayRate = 1200;
-        var todayRate = parseFloat(todayRate.replace(/,/g, ''));
-        if (currency === "JPY" || currency === "VND" || currency === "KRW")
-        todayRate = todayRate / 100;
-        sendMessage(recipientId, {text: amount+" " + currency + " = " + todayRate + " MMK"});
-        return true;
-    }
-    return false;
-}
-/*function doConversion(recipientId, text) {
+
+function doConversion(recipientId, text) {
     var amount,inputCurrency,todayRate;
     var currency = null;
     text = text || "";
@@ -214,4 +137,4 @@ function changeCurrency(recipientId, postbackCurrency){
             return true;
         }
     return false;
-}*/
+};
