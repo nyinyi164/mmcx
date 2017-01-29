@@ -16,7 +16,7 @@ var urlUpdate="http://forex.cbm.gov.mm/api/latest";
 request(urlUpdate, function (error, response, body) {
   if (!error && response.statusCode == 200) {
         json = JSON.parse(body);
-        console.log("here "+typeof json);
+        //console.log("here "+typeof json);
         
     }
   else {
