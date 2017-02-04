@@ -273,7 +273,7 @@ function sendCurrenyOption(recipientId, text) {
             }
             return true;
         }else{
-            console.log("in return");
+            //console.log("in return");
             return false;        
         } 
 }
