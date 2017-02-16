@@ -1,1 +1,1 @@
-https://young-bayou-60572.herokuapp.com/
+You can test use this bot at m.me/mmcxbot.
